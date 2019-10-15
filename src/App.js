@@ -3,6 +3,7 @@ import Scroll from './components/Scroll/Scroll.component';
 import CardList from './components/CardList/CardList.component';
 import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner.component';
 import SearchBox from './components/SearchBox/SearchBox.component';
+import ErrorBoundry from './components/ErrorBoundry';
 
 import './App.scss';
 
@@ -54,7 +55,9 @@ class App extends Component {
         {loading ? <LoadingSpinner /> : 
           (
             <Scroll>
-              <CardList robots={filteredRobots} />
+              <ErrorBoundry>
+                <CardList robots={filteredRobots} />
+              </ErrorBoundry>
             </Scroll>
           )
         }
