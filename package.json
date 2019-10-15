@@ -1,6 +1,7 @@
 {
   "name": "practice-oct-2019-react-redux-complete-web-developer",
   "version": "0.1.0",
+  "homepage": "https://robert-laws.com/practice-oct-2019-react-redux-complete-web-developer",
   "private": true,
   "dependencies": {
     "bootstrap": "^4.3.1",
