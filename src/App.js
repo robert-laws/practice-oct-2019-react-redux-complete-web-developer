@@ -1,25 +1,20 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Scroll from './components/Scroll/Scroll.component';
 import CardList from './components/CardList/CardList.component';
 import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner.component';
 import SearchBox from './components/SearchBox/SearchBox.component';
 import ErrorBoundry from './components/ErrorBoundry';
 
+import { setSearchField } from './redux/search/search.actions';
+
+
 import './App.scss';
 
 class App extends Component {
   state = {
     loading: true,
-    robots: [],
-    searchText: ''
-  }
-
-  handleChange = event => {
-    const { name, value } = event.target;
-
-    this.setState({
-      [name]: value
-    });
+    robots: []
   }
 
   componentDidMount = async () => {
@@ -40,17 +35,18 @@ class App extends Component {
   }
 
   render() {
-    const filteredRobots = this.state.robots.filter(robot => (
-      robot.name.toLowerCase().includes(this.state.searchText.toLowerCase()))
-    )
-
     const { loading } = this.state;
+    const { searchField, onSearchChange } = this.props;
+    
+    const filteredRobots = this.state.robots.filter(robot => (
+      robot.name.toLowerCase().includes(searchField.toLowerCase()))
+    )
 
     return (
       <div className="container">
         <div className='text-center'>
           <h1 className='app-title'>RoboFriends</h1>
-          <SearchBox handleChange={this.handleChange} />
+          <SearchBox handleChange={onSearchChange} />
         </div>
         {loading ? <LoadingSpinner /> : 
           (
@@ -66,4 +62,16 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    searchField: state.search.searchField
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onSearchChange: event => dispatch(setSearchField(event.target.value))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
