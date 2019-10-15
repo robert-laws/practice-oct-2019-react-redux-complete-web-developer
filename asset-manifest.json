@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/practice-oct-2019-react-redux-complete-web-developer/static/css/main.da883f65.chunk.css",
+    "main.js": "/practice-oct-2019-react-redux-complete-web-developer/static/js/main.618c3f18.chunk.js",
+    "main.js.map": "/practice-oct-2019-react-redux-complete-web-developer/static/js/main.618c3f18.chunk.js.map",
+    "runtime-main.js": "/practice-oct-2019-react-redux-complete-web-developer/static/js/runtime-main.6c0004fc.js",
+    "runtime-main.js.map": "/practice-oct-2019-react-redux-complete-web-developer/static/js/runtime-main.6c0004fc.js.map",
+    "static/css/2.0624914a.chunk.css": "/practice-oct-2019-react-redux-complete-web-developer/static/css/2.0624914a.chunk.css",
+    "static/js/2.48cde6f4.chunk.js": "/practice-oct-2019-react-redux-complete-web-developer/static/js/2.48cde6f4.chunk.js",
+    "static/js/2.48cde6f4.chunk.js.map": "/practice-oct-2019-react-redux-complete-web-developer/static/js/2.48cde6f4.chunk.js.map",
+    "index.html": "/practice-oct-2019-react-redux-complete-web-developer/index.html",
+    "precache-manifest.5370fe3f320cdee0f645ced2aa7d7d9b.js": "/practice-oct-2019-react-redux-complete-web-developer/precache-manifest.5370fe3f320cdee0f645ced2aa7d7d9b.js",
+    "service-worker.js": "/practice-oct-2019-react-redux-complete-web-developer/service-worker.js",
+    "static/css/2.0624914a.chunk.css.map": "/practice-oct-2019-react-redux-complete-web-developer/static/css/2.0624914a.chunk.css.map",
+    "static/css/main.da883f65.chunk.css.map": "/practice-oct-2019-react-redux-complete-web-developer/static/css/main.da883f65.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6c0004fc.js",
+    "static/css/2.0624914a.chunk.css",
+    "static/js/2.48cde6f4.chunk.js",
+    "static/css/main.da883f65.chunk.css",
+    "static/js/main.618c3f18.chunk.js"
+  ]
+}
