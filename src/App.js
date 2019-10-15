@@ -17,17 +17,21 @@ class App extends Component {
 
     this.setState({
       [name]: value
-    })
+    });
   }
 
   render() {
+    const filteredRobots = this.state.robots.filter(robot => (
+      robot.name.toLowerCase().includes(this.state.searchText.toLowerCase()))
+    )
+
     return (
       <div className="container">
         <div className='text-center'>
           <h1 className='app-title'>RoboFriends</h1>
           <SearchBox handleChange={this.handleChange} />
         </div>
-        <CardList robots={this.state.robots} />
+        <CardList robots={filteredRobots} />
       </div>
     );
   }
