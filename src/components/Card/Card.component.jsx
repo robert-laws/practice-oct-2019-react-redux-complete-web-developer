@@ -4,7 +4,7 @@ import './Card.styles.scss';
 
 const Card = ({ id, name, email }) => {
   const cardStyle = {
-    width: '11.8rem'
+    width: '14rem'
   }
 
   return (

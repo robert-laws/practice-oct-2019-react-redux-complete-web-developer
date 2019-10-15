@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
+import Scroll from './components/Scroll/Scroll.component';
 import CardList from './components/CardList/CardList.component';
+import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner.component';
 import SearchBox from './components/SearchBox/SearchBox.component';
 
 import './App.scss';
 
-import { robots } from './data/robots';
-
 class App extends Component {
   state = {
-    robots: robots,
+    loading: true,
+    robots: [],
     searchText: ''
   }
 
@@ -20,10 +21,29 @@ class App extends Component {
     });
   }
 
+  componentDidMount = async () => {
+    try {
+      const data = await fetch('https://jsonplaceholder.typicode.com/users').then(async(response) => {
+        return await response.json();
+      })
+
+      if(data.length > 0) {
+        this.setState({
+          robots: data,
+          loading: false
+        })      
+      }
+    } catch (error) {
+      console.error(error)
+    }   
+  }
+
   render() {
     const filteredRobots = this.state.robots.filter(robot => (
       robot.name.toLowerCase().includes(this.state.searchText.toLowerCase()))
     )
+
+    const { loading } = this.state;
 
     return (
       <div className="container">
@@ -31,7 +51,13 @@ class App extends Component {
           <h1 className='app-title'>RoboFriends</h1>
           <SearchBox handleChange={this.handleChange} />
         </div>
-        <CardList robots={filteredRobots} />
+        {loading ? <LoadingSpinner /> : 
+          (
+            <Scroll>
+              <CardList robots={filteredRobots} />
+            </Scroll>
+          )
+        }
       </div>
     );
   }
