@@ -21,7 +21,7 @@ export const robots = [
     id: 4,
     name: 'Patricia Lebsack',
     username: 'Karianne',
-    email: 'Julianne.OConner@kory.org'
+    email: 'Julie.OConner@kory.org'
   },
   {
     id: 5,
@@ -45,13 +45,13 @@ export const robots = [
     id: 8,
     name: 'Nicholas Runolfsdottir V',
     username: 'Maxime_Nienow',
-    email: 'Sherwood@rosamond.me'
+    email: 'Sher@rosamond.me'
   },
   {
     id: 9,
     name: 'Glenna Reichert',
     username: 'Delphine',
-    email: 'Chaim_McDermott@dana.io'
+    email: 'McDermott@dana.io'
   },
   {
     id: 10,

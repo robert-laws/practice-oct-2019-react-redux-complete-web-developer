@@ -1,16 +1,20 @@
 import React from 'react';
 
+import './Card.styles.scss';
+
 const Card = ({ id, name, email }) => {
   const cardStyle = {
-    width: '18rem'
+    width: '11.8rem'
   }
 
   return (
-    <div className='shadow card border-dark my-3' style={cardStyle}>
+    <div className='shadow card border-dark m-3 float-left' style={cardStyle}>
       <img src={`https://robohash.org/${id}?size=200x200`} alt='robot' className='card-img-top' />
       <div className='card-body text-dark'>
-        <h5 className='card-title'>{name}</h5>
-        <p className='card-text'>{email}</p>
+        <h6 className='card-title'>{name}</h6>
+        <p className='card-text'>
+          <small>{email}</small>
+        </p>
       </div>
     </div>
   )
