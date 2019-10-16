@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
 
-import searchReducer from './search/search.reducer';
+import searchRobots from './search/search.reducer';
+import requestRobots from './robots/robots.reducer';
 
 export default combineReducers({
-  search: searchReducer
+  searchRobots,
+  requestRobots
 })

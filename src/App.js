@@ -7,38 +7,20 @@ import SearchBox from './components/SearchBox/SearchBox.component';
 import ErrorBoundry from './components/ErrorBoundry';
 
 import { setSearchField } from './redux/search/search.actions';
+import { getRobots } from './redux/robots/robots.actions';
 
 
 import './App.scss';
 
 class App extends Component {
-  state = {
-    loading: true,
-    robots: []
-  }
-
-  componentDidMount = async () => {
-    try {
-      const data = await fetch('https://jsonplaceholder.typicode.com/users').then(async(response) => {
-        return await response.json();
-      })
-
-      if(data.length > 0) {
-        this.setState({
-          robots: data,
-          loading: false
-        })      
-      }
-    } catch (error) {
-      console.error(error)
-    }   
+  componentDidMount = () => {
+    this.props.onGetRobots();
   }
 
   render() {
-    const { loading } = this.state;
-    const { searchField, onSearchChange } = this.props;
+    const { searchField, onSearchChange, robots, isPending, error } = this.props;
     
-    const filteredRobots = this.state.robots.filter(robot => (
+    const filteredRobots = robots.filter(robot => (
       robot.name.toLowerCase().includes(searchField.toLowerCase()))
     )
 
@@ -48,13 +30,15 @@ class App extends Component {
           <h1 className='app-title'>RoboFriends</h1>
           <SearchBox handleChange={onSearchChange} />
         </div>
-        {loading ? <LoadingSpinner /> : 
+        {isPending ? <LoadingSpinner /> : 
           (
-            <Scroll>
-              <ErrorBoundry>
-                <CardList robots={filteredRobots} />
-              </ErrorBoundry>
-            </Scroll>
+            error !== '' ? <p>{error}</p> : (
+              <Scroll>
+                <ErrorBoundry>
+                  <CardList robots={filteredRobots} />
+                </ErrorBoundry>
+              </Scroll>
+            )
           )
         }
       </div>
@@ -64,13 +48,17 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    searchField: state.search.searchField
+    searchField: state.searchRobots.searchField,
+    robots: state.requestRobots.robots,
+    isPending: state.requestRobots.isPending,
+    error: state.requestRobots.error
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSearchChange: event => dispatch(setSearchField(event.target.value))
+    onSearchChange: event => dispatch(setSearchField(event.target.value)),
+    onGetRobots: () => dispatch(getRobots())
   }
 }
 

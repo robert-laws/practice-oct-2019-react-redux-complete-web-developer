@@ -1,10 +1,10 @@
 import types from './search.types';
 
-const initialState = {
+const initialStateSearch = {
   searchField: ''
 }
 
-export const searchReducer = (state = initialState, action = {}) => {
+export const searchRobots = (state = initialStateSearch, action = {}) => {
   switch (action.type) {
     case types.CHANGE_SEARCH_FIELD:
       return {
@@ -17,4 +17,4 @@ export const searchReducer = (state = initialState, action = {}) => {
   }
 }
 
-export default searchReducer
+export default searchRobots;
